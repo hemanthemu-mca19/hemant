@@ -11,25 +11,17 @@ int main()
         cin >> n;
         int arr[n];
         for (int i = 0; i < n; i++)
-        {
-            cin >> x;
-            arr[i] = x;
-        }
+            cin>> arr[i];
 
-        vector<int> leader;
-        for (int i = 0; i < n-1; i++)
-        {
-            if(arr[i] >= arr[i+1])
-                leader.push_back(arr[i]);
+        int Rmax = arr[n-1];
+        cout << Rmax << " ";
+        for(int i = n-1; i > 0; i--){
+            if(arr[i-1] >= Rmax){
+                Rmax=arr[i-1];
+                cout<<Rmax<<" ";
+            }
+          }
         }
-        leader.push_back(arr[n-1]);
-        int l = leader.size();
-        
-        vector<int>::iterator it;
-
-    for (it = leader.end() - 1; it >= leader.begin(); it--)
-        cout << *it << " ";
-    cout << endl;
-    }
+        cout << endl;
     return 0;
 }
