@@ -14,3 +14,12 @@ int solve(vector<int>& nums) {
     }
     return gmax;
 }
+//map method
+
+int solve(vector<int>& nums) {
+    map<int, int> count;
+    int mx = 0;
+    for (int i = 0; i < nums.size(); i++) mx = max(mx, ++count[nums[i]]);
+
+    return mx;
+}
