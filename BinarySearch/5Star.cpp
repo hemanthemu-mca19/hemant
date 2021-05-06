@@ -13,3 +13,16 @@ int solve(vector<vector<int>>& reviews, int threshold) {
     }
     return cnt;
 }
+
+//Optimized
+int solve(vector<vector<int>>& reviews, int t) {
+    int n = reviews.size();
+    int st5 = 0, trev = 0;
+    for (auto& v : reviews) {
+        st5 += v[0];
+        trev += v[1];
+    }
+    if (t == 100 & st5 == trev) return 0;
+    double x = ((double)st5 * 100 - (double)trev * t) / ((double)t - 100);
+    return (ceil(x) < 0) ? (0) : (ceil(x));
+}
