@@ -17,3 +17,18 @@ string solve(string s) {
     ans +=v[0];
     return ans.substr(1, s.size());
 }
+
+//Space Optimised 
+string solve(string sentence) {
+    int N = sentence.size();
+    for (int i = 0, j = 0; i < N;) {
+        while (i < N && isspace(sentence[i])) i++;
+        if (i >= N) break;
+        for (j = i; j < N && !isspace(sentence[j]); j++)
+            ;
+        reverse(sentence.begin() + i, sentence.begin() + j);
+        i = j;
+    }
+    reverse(sentence.begin(), sentence.end());
+    return sentence;
+}
