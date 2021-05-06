@@ -29,3 +29,27 @@ vector<int> solve(vector<int>& nums, int k) {
 
     return nums;
 }
+
+//Optimisation without STL
+vector<int> solve(vector<int>& nums, int k) {
+    int n = nums.size();
+    int start = 0, end = k - 1;
+    while (start < end) {
+        swap(nums[start], nums[end]);
+        start++;
+        end--;
+    }
+    start = k, end = n - 1;
+    while (start < end) {
+        swap(nums[start], nums[end]);
+        start++;
+        end--;
+    }
+    start = 0, end = n - 1;
+    while (start < end) {
+        swap(nums[start], nums[end]);
+        start++;
+        end--;
+    }
+    return nums;
+}
