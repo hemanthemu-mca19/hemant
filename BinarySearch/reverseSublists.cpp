@@ -6,3 +6,17 @@ bool solve(vector<int>& nums, vector<int>& target) {
     }
     return ms.empty();
 }
+
+//Optimised run time
+bool solve(vector<int>& nums, vector<int>& target) {
+    unordered_map<int, int> mp;
+    for (int& x : nums) {
+        mp[x]++;
+    }
+    for (int& x : target) {
+        if (--mp[x] == 0) {
+            mp.erase(x);
+        }
+    }
+    return mp.size() == 0 ? true : false;
+}
