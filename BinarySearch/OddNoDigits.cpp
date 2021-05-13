@@ -9,3 +9,14 @@ int solve(vector<int>& nums) {
     }
     return odd;
 }
+
+//Maths
+int solve(vector<int>& nums) {
+    int cnt = 0;
+
+    for (auto num : nums) {
+        cnt += int(log10(num) + 1) & 1;
+    }
+
+    return cnt;
+}
