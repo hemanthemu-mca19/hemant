@@ -1,0 +1,29 @@
+// https://binarysearch.com/problems/Consecutive-Duplicates
+
+/**
+
+Consecutive Duplicates
+Given a string s, consisting of "X" and "Y"s, delete the minimum number of characters such that there's no consecutive "X" and no consecutive "Y".
+
+Constraints
+
+n ≤ 100,000 where n is the length of s
+Example 1
+Input
+s = "YYYXYXX"
+Output
+"YXYX"
+
+**/
+
+// CODE
+
+string solve(string s) {
+    if(s == "") return s;
+    string ans = "";
+    ans += s[0];
+    for(int i=1; i<s.size(); i++){
+        if(s[i] != s[i-1]) ans += s[i];
+    }
+    return ans;
+}
