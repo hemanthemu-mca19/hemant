@@ -1,0 +1,40 @@
+// https://binarysearch.com/problems/Maximize-Binary-String-Score
+
+/**
+Maximize Binary String Score
+You are given a binary string s containing "1"s and "0"s. Consider splitting the string into two non-empty substrings such that a + b = s. The score of this split is defined to be the sum of the number of "0"s in a plus the number of "1"s in b. Return the maximum score possible.
+
+Constraints
+
+2 ≤ n ≤ 100,000 where n is the length of s
+Example 1
+Input
+s = "001001110111"
+Output
+10
+Explanation
+We can split the string into "00100" + "1110111". Then, thee score is 4 + 6 = 10`.
+
+**/
+
+// CODE
+int solve(string s) {
+   int zeros = 0, ones = 0,  n = s.size(); 
+   for(auto x : s) {
+       if( x == '0' ) zeros++;
+       else ones++;
+   }
+   int maxScore = 0;
+   int ze=0, on =0;
+   for(int i=0; i<n-1; i++){
+       if(s[i] == '0') {
+           ze++;
+           maxScore = max(maxScore, (ones - on + ze));
+       }
+       else {
+           on++;
+           maxScore = max(maxScore, (ze + ones - on));
+       }
+   }
+   return maxScore;
+} 
