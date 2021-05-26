@@ -57,3 +57,19 @@ int solve(vector<string>& words) {
     }
     return cnt;
 }
+
+// solution using set
+
+int solve(vector<string>& words) {
+    unordered_set<string> vis;
+
+    for (string& s : words) {
+        for (int i = 0; i < s.size(); i++) {
+            rotate(s.begin(), s.begin() + 1, s.end());
+            if (vis.count(s)) break;
+        }
+        vis.insert(s);
+    }
+
+    return vis.size();
+}
