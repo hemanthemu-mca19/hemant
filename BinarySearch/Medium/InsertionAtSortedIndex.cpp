@@ -23,3 +23,19 @@ Output
 int solve(vector<int>& nums, int target) {
     return upper_bound(nums.begin(), nums.end(), target)-nums.begin();
 }
+
+
+// Implemented using Binary search
+int solve(vector<int>& nums, int target) {
+    int l = 0, r = nums.size() - 1;
+    int mid, idx = nums.size();
+    while (l <= r) {
+        mid = l + (r - l) / 2;
+        if (nums[mid] > target) {
+            idx = mid;
+            r = mid - 1;
+        } else
+            l = mid + 1;
+    }
+    return idx;
+}
