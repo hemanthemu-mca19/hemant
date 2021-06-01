@@ -18,7 +18,7 @@ One possible longest alternating subsequence is [5, 9, 1, 8, 3, 6] and the diffe
 
 **/
 
-// CODE
+// CODE (O(n) space and O(n^2) Time Complexity )
 
 int solve(vector<int>& nums) {
     int n = nums.size();
@@ -33,4 +33,17 @@ int solve(vector<int>& nums) {
        mx = max(mx, max(dp[i][0], dp[i][1]));
    }
    return mx;
+}
+
+// Optimized Code (O(1) space and O(n) Time Complexity )
+
+int solve(vector<int>& nums) {
+    int n = nums.size();
+    if(n==0) return 0;
+    int mx = 1, mn = 1;
+    for(int i=1; i<n; i++) {
+        if(nums[i] > nums[i-1]) mx = 1+mn;
+        else if(nums[i] < nums[i-1]) mn = 1+mx;
+    }
+   return max(mx, mn);
 }
