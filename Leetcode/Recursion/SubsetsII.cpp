@@ -1,4 +1,4 @@
-// https://leetcode.com/explore/challenge/card/july-leetcoding-challenge-2021/608/week-1-july-1st-july-7th/3799/
+// https://leetcode.com/problems/subsets-ii/
 
 /**
 Subsets II
@@ -34,6 +34,9 @@ Constraints:
 **/
 
 // CODE
+// TC (nlogn + 2^n * n)
+// SC O(2^n)*O(k) k is avg. size of each vector in ans 
+// Auxilially space i.e. stack space  is O(n) as ans vector can have atmost n elements in it
 class Solution {
 public:
     vector<vector<int> > ans;
