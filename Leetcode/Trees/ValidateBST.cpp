@@ -43,3 +43,32 @@ The number of nodes in the tree is in the range [1, 104].
 // CODE
 // tc O(2*n)
 // SC O(n) + O(h)stacksize
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+ * };
+ */
+class Solution {
+public:
+    void inorderTraversal(TreeNode* node, vector<int> &inorder) {
+        if(node == nullptr) return;
+        inorderTraversal(node->left, inorder);
+        inorder.push_back(node->val);
+        inorderTraversal(node->right, inorder);
+    }
+    bool isValidBST(TreeNode* root) {
+        vector<int> inorder;
+        if(!root) return true;
+        inorderTraversal(root, inorder);
+        for(int i=1; i<inorder.size(); i++) {
+            if(inorder[i] <= inorder[i-1]) return false;
+        }
+        return true;
+    }
+};
