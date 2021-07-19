@@ -60,3 +60,16 @@ public:
         return !left ? right : !right ? left : root;
     }
 };
+
+// Optimized using property of BST
+class Solution {
+public:
+    TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
+        //parent's value is more than p and q value, move left
+        if(root->val > p->val and root->val > q->val) return lowestCommonAncestor(root->left, p, q);
+        //parent's value is less than p and q value, move right
+        else if(root->val < p->val and root->val < q->val) return lowestCommonAncestor(root->right, p, q);
+        // otherwise we got the split point
+        else return root;
+    }
+};
