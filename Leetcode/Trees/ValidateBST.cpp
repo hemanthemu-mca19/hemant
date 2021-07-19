@@ -72,3 +72,18 @@ public:
         return true;
     }
 };
+
+
+// recursive o(n)tc o(n)sc
+class Solution {
+public:
+    bool validateBST(TreeNode* root, long l, long r) {
+        if(root == nullptr) return true;
+        if(root->val <= l || root->val >= r) return false;
+        return validateBST(root->left, l, root->val) and validateBST(root->right, root->val, r);
+    }
+    bool isValidBST(TreeNode* root) {
+        // if(root == nullptr) return true;
+        return validateBST(root, LONG_MIN, LONG_MAX);
+    }
+};
