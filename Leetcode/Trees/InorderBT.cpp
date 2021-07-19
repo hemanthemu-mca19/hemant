@@ -46,7 +46,7 @@ The number of nodes in the tree is in the range [0, 100].
 -100 <= Node.val <= 100
 **/
 
-// Recursive CODE
+// Recursive Approach
 /**
  * Definition for a binary tree node.
  * struct TreeNode {
@@ -67,6 +67,29 @@ public:
         traversal.push_back(root->val);
         if(root->right) inorderTraversal(root->right);
         
+        return traversal;
+    }
+};
+
+// Iterative Approach
+class Solution {
+public:
+    vector<int> inorderTraversal(TreeNode* root) {
+        vector<int> traversal;
+        if(root == nullptr) return traversal;
+        stack<TreeNode* > st;
+        TreeNode* curr = root;
+        while(curr != nullptr || !st.empty()){
+            
+            while(curr != nullptr){
+                st.push(curr);
+                curr = curr->left;
+            }
+            curr = st.top();
+            traversal.push_back(curr->val);
+            st.pop();
+            curr = curr->right;
+        }
         return traversal;
     }
 };
