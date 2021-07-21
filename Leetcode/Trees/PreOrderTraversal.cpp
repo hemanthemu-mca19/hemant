@@ -72,3 +72,22 @@ public:
 };
 
 //Iterative code
+class Solution {
+public:
+    vector<int> preorderTraversal(TreeNode* root) {
+        vector<int> traversal;
+        
+        if(!root) return traversal;
+            
+        stack<TreeNode* > nodeStack;
+        nodeStack.push(root);
+        while( !nodeStack.empty() ) {
+            TreeNode* curr = nodeStack.top();
+            nodeStack.pop();
+            traversal.push_back(curr->val);
+            if(curr->right) nodeStack.push(curr->right);
+            if(curr->left) nodeStack.push(curr->left);
+        }
+        return traversal;
+    }
+};
